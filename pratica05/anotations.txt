@@ -1,0 +1,56 @@
+
+    public boolean remove(int x) {
+        elem[x - 1] = false;
+        return true;
+
+    }
+
+    public void clear() {
+        size = 0;
+    }
+
+    public int size() {
+        return size;
+    }
+
+
+    public boolean equals(IntSet s) {
+        if (this.size != s.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < size; i++) {
+
+            if (!s.contains(elem[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public IntSet intersection(IntSet s) {
+        ArrayListIntSet intersection = new ArrayListIntSet(100);
+        for (int i = 0; i < size; i++) {
+            if (s.contains(elem[i])) {
+                intersection.add(elem[i]);
+            }
+        }
+        return intersection;
+    }
+
+
+
+
+
+
+    System.out.println("Adicionando novamente todos os numeros entre 1 e " + n + "...");
+        for (int i = 1; i <= n; i++)
+            tmp = s.add(i);
+
+        System.out.println("Verificando se todos os numeros entre 1 e " + n + " existem...");
+        for (int i = 1; i <= n; i++)
+            tmp = s.contains(i);
+
+        System.out.println("Removendo todos os numeros entre 1 e " + n + "...");
+        for (int i = 1; i <= n; i++)
+            tmp = s.remove(i);
