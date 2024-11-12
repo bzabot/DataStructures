@@ -99,23 +99,108 @@ public class SinglyLinkedList<T> {
         size--;
     }
 
-    public String toString() {
+    // Return the element of a given pos
+    public T get(int pos) {
+        if (pos >= size || pos < 0)
+            return null;
 
-        if (isEmpty())
-            return "{}";
-
-        String ans = "{";
         Node<T> curr = first;
-        while (curr.getNext() != null) {
-            ans += curr.getValue() + ", ";
+        for (int i = 0; i < pos; i++)
             curr = curr.getNext();
+        return curr.getValue();
+    }
+
+    public T remove(int pos) {
+        // If the list is empty
+        if (isEmpty() || pos >= size || pos < 0)
+            return null;
+
+        Node<T> retur = first;
+        Node<T> curr = first;
+        // If we want to remove the first element
+        if (pos == 0) {
+            first = first.getNext();
+        } else
+
+        // If we want to remove the last element
+        if (pos == size - 1) {
+
+            while (curr.getNext().getNext() != null) {
+                curr = curr.getNext();
+            }
+            retur = curr.getNext();
+            curr.setNext(null);
+        } else {
+            // If we want to remove one element from the midle
+
+            // Iterate till the element before pos
+            for (int i = 0; i < pos - 1; i++) {
+                curr = curr.getNext();
+            }
+            // Now curr have the value of the node before pos
+            retur = curr.getNext();
+            curr.setNext(curr.getNext().getNext());
         }
 
-        ans += curr.getValue() + "}";
-        return ans;
+        size--;
+        return retur.getValue();
+
     }
-    /*
-     * ▶ String toString() - representação em String (para impressão
-     */
+
+    // Create a copy of the list
+    public SinglyLinkedList<T> copy() {
+        SinglyLinkedList<T> newList = new SinglyLinkedList<>();
+        if (!isEmpty()) {
+            Node<T> curr = first;
+            newList.addLast(curr.getValue());
+            while (curr.getNext() != null) {
+                curr = curr.getNext();
+                newList.addLast(curr.getValue());
+            }
+        }
+        return newList;
+    }
+
+    // Duplicate each element of the list
+    public void duplicate() {
+        if (!isEmpty()) {
+            Node<T> curr = first;
+
+            // Caso não seja o último elemento
+            while (curr.getNext() != null) {
+                curr.setNext(new Node<>(curr.getValue(), curr.getNext()));
+                curr = curr.getNext().getNext();
+            }
+            // No ultimo elemento
+            curr.setNext(new Node<>(curr.getValue(), curr.getNext()));
+            size *= 2;
+        }
+    }
+
+    // Count the number of occurencies of value in the list
+    public int count(T value) {
+        int count = 0;
+        Node<T> curr = first;
+        for (int i = 0; i < size; i++) {
+            if (curr.getValue().equals(value))
+                count++;
+            curr = curr.getNext();
+        }
+        return count;
+    }
+
+    public String toString() {
+
+        String str = "{";
+        Node<T> cur = first;
+        while (cur != null) {
+            str += cur.getValue();
+            cur = cur.getNext();
+            if (cur != null)
+                str += ",";
+        }
+        str += "}";
+        return str;
+    }
 
 }
