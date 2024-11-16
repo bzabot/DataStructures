@@ -1,9 +1,5 @@
 /*  
 Implement a LinkedList (Singly to not conflict with Java's)
-
-
-
-
 */
 
 public class SinglyLinkedList<T> {
