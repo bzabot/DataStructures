@@ -1,0 +1,145 @@
+<html><head> <title>EDados Problema 89 - O Cobrador de Impostos</title> 
+<link rel="StyleSheet" href="EDados%20Problema%2089%20-%20O%20Cobrador%20de%20Impostos_files/style.css" type="text/css"> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head> 
+<body> 
+
+<h1>Estruturas de Dados -- DCC-FCUP</h1><h1> 
+
+</h1><h2>Problema 89 - O Cobrador de Impostos</h2> 
+<hr> 
+
+<h3>O problema</h3> 
+
+<p align="justify">Foi-lhe fornecida uma série de dados sobre um 
+conjunto de empresas. Nomeadamente, para cada empresa, foi-lhe dada 
+informação sobre:
+
+</p><ul>
+<li>O seu número de indentificação fiscal (NIF)
+</li><li>O nome da empresa
+</li><li>A sua área de actividade económica
+</li><li>O código da área de actividade económica
+</li><li>Os rendimentos declarados no último ano fiscal
+</li></ul>
+
+<p align="justify">A sua tarefa consiste em ler os dados e apresentar o 
+total de rendimentos por cada área de actividade económica. A  
+informação deve aparecer ordenada por ordem crescente do código de área 
+económica.</p>
+
+
+<p><font color="#000000"><img src="EDados%20Problema%2089%20-%20O%20Cobrador%20de%20Impostos_files/89.jpg" name="Patinhas" align="MIDDLE" border="0"></font></p> 
+
+
+<h3>Input</h3> 
+
+<p align="justify">Os dados sobre as empresas são apresentados da seguinte forma. A primeira linha contém o <b>número de empresas</b> e o valor de uma <b>flag</b>
+ que pode tomar os valores 0 ou 1. Cada empresa aparece em seguida e é 
+representada por 5 linhas, uma para cada informação da lista apresentada
+ acima. O código de actividade económica é um inteiro entre 1 e 100. O 
+valor dos rendimentos declarados é um inteiro positivo.</p>
+
+
+
+<h3>Output</h3> 
+
+<p align="justify">
+No caso de a flag ter o valor 0, deverá escrever para o output o número 
+de actividades económicas diferentes que aparecem no input.</p>
+<p align="justify">
+Se a flag tiver o valor 1, deverá apresentar como resultado uma lista 
+ordenada do total de rendimentos por cada área de actividade económica. A
+ ordem deve ser crescente nos códigos da área de actividade económica. 
+Cada linha de output deverá incluir o código da área de actividade 
+económica seguido de um espaço e do total de rendimentos respectivo.</p>
+
+<h3>Exemplos de input/output</h3> 
+
+<h3> 
+<table width="470" border="1" cellpadding="4" cellspacing="3">
+<colgroup><col width="381">	<col width="62"> 
+</colgroup><tbody><tr>
+<th width="381"><p>Input</p> </th> 
+<th width="62"> <p>Output</p></th> 
+</tr>
+<tr valign="TOP">
+<td width="381"> 
+<pre style="text-align: left">5 1
+234523455
+Restaurante Abocanhado
+Restauracao
+10
+21332
+343554566
+Rodoviaria Andando
+Transportes
+15
+324003
+122324456
+Restaurante do Ze
+Restauracao
+10
+120334
+123345565
+Metro do Porto
+Transportes
+15
+123343
+733345566
+ZXY Informatica
+Servicos
+20
+200430
+</pre> 
+</td>
+<td width="62"> <pre style="text-align: left">10 141666
+15 447346
+20 200430
+</pre> </td> 
+</tr> 
+</tbody></table> 
+
+</h3><h3> 
+<table width="470" border="1" cellpadding="4" cellspacing="3">
+<colgroup><col width="381">	<col width="62"> 
+</colgroup><tbody><tr>
+<th width="381"><p>Input</p> </th> 
+<th width="62"> <p>Output</p></th> 
+</tr>
+<tr valign="TOP">
+<td width="381"> 
+<pre style="text-align: left">5 0
+234523455
+Restaurante Abocanhado
+Restauracao
+10
+21332
+343554566
+Rodoviaria Andando
+Transportes
+15
+324003
+122324456
+Restaurante do Ze
+Restauracao
+10
+120334
+123345565
+Metro do Porto
+Transportes
+15
+123343
+733345566
+ZXY Informatica
+Servicos
+20
+200430
+</pre> 
+</td>
+<td width="62"> <pre style="text-align: left">3
+</pre> </td> 
+</tr> 
+</tbody></table> 
+
+<hr> <p class="right">Última actualização: <b><script language="javascript">document.write(document.lastModified);</script>11/17/2024 19:27:34</b></p><b> <hr> <div id="footer"> <p>Copyright © 2009 Fernando Silva, DCC, Faculdade de Ciências da Universidade do Porto </p> </div>    
+</b></h3><script src="EDados%20Problema%2089%20-%20O%20Cobrador%20de%20Impostos_files/app.js" type="text/javascript"></script></body></html>

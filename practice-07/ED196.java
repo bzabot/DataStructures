@@ -2,9 +2,8 @@ public class ED196 {
 
     public static void process(MyQueue<String> q, MyQueue<String> a, MyQueue<String> b) {
         while (q.first() != null) {
-
-            String fila = q.dequeue();
             String nome = q.dequeue();
+            String fila = q.dequeue();
 
             if (fila.equals("A"))
                 a.enqueue(nome);
