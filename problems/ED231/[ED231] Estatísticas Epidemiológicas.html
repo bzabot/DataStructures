@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+	<title>[ED231] Estatísticas Epidemiológicas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<style>
+	  table,tr,td,th {
+	    border-collapse: collapse;
+	    border: 1px solid black;
+	  }
+
+	  th, td {
+	  padding: 4px;
+	  text-align: left;
+	  vertical-align: top;
+	  }
+
+	  .darkgreen {
+	  color: #008800;
+	  font-weight: bold;
+	  }
+
+	  .darkred {
+	  color: #880000;
+	  font-weight: bold;
+	  }
+	</style>
+	
+</head><body bgcolor="white">
+    
+<h1><font color="black">[ED231] Estatísticas Epidemiológicas</font></h1>
+
+<p><font color="red"></font></p><p><font color="red">Neste problema deverá submeter uma classe <b>ED231</b> contendo um programa completo para resolver o problema (ou seja, com o método main).</font></p>
+
+<hr>
+
+<p><img src="[ED231]%20Estat%C3%ADsticas%20Epidemiol%C3%B3gicas_files/231.jpg" alt="" align="right" border="0">A
+ divisão de epidemiologia e estatística do serviço de saúde da 
+Algoritmolândia tem disponíveis os dados de propagação de um novo vírus 
+ED-VIR-20, sendo registado diariamente o número total de casos 
+confirmados. Será que podes ajudá-los a calcular algumas estatísticas 
+sobre esses dados? 
+
+</p><h2><font color="black">Input</font></h2>
+
+<p>Na primeira linha do <i>input</i> vem um número <b>N</b> indicando o número de dias consecutivos durante os quais foi registo o total de casos confirmados (<i>2 ≤ N ≤ 100</i>).
+
+</p><p>A segunda linha contém uma sequência de <b>N</b> inteiros <b>C<sub>(i)</sub></b> separados por um espaço, indicando o número de casos confirmados em cada dia (<i>0 ≤ C<sub>(i)</sub> ≤ 10<sup>5</sup></i>). A sequência é garantidamente crescente (<i>C<sub>(i-1)</sub>&nbsp;≤&nbsp;C<sub>(i)</sub></i>).
+
+</p><p>A terceira linha contém o valor de uma <b>flag</b> que pode tomar os valores 1, 2 ou 3. Este valor indica qual a subtarefa a que deve responder.</p>
+
+<h2><font color="black">Output</font></h2>
+
+<p>O output depende do valor da flag dada no input:
+
+</p><p><b>Se a flag for 1</b> <i>(30%)</i>, deve imprimir uma linha contendo dois inteiros separado por um espaço: <b>o valor mínimo e o valor máximo de novos casos por dia</b>. O valor de novos casos no dia <i>i</i> é igual a <i>C<sub>(i)</sub>&nbsp;-&nbsp;C<sub>(i-1)</sub></i>.</p>
+
+<p><b>Se a flag for 2</b> <i>(40%)</i>: deve imprimir uma linha contendo dois inteiros separado por um espaço: <b>a quantidade de períodos de baixa propagação</b> e <b>o maior tamanho de um período de baixa propagação</b>. Um <b>período de baixa propagação</b>
+ é definido como sendo uma sequência de dias consecutivos onde a subida 
+percentual diária de casos confirmados é sempre inferior ou igual a 5%. O
+ seu tamanho é a quantidade de números na sequência. A subida percentual
+ no dia <i>i</i> é igual a <i>(C<sub>(i)</sub>&nbsp;-&nbsp;C<sub>(i-1)</sub>)&nbsp;/&nbsp;C<sub>(i-1)</sub></i>. É garantido nesta flag que pelo menos um dia tem subida inferior ou igual a 5%.
+
+</p><p><b>Se a flag for 3</b> <i>(30%)</i>, deve imprimir um pequeno <b>gráfico de barras indicando o total de casos confirmados por dia</b>. A cada coluna do gráfico corresponde um dia <i>i</i>, e a altura da barra corresponde ao número de casos nesse dia <i>C<sub>i</sub></i>. A barra deve ser desenhada usando carateres '#', onde cada '#' corresponde a 100 casos, ou seja, o número de '#' no dia <i>i</i> corresponde a <i>C<sub>(i)</sub>&nbsp;/&nbsp;100</i>.
+ Os espaços em branco no gráfico devem ser representados pelo carater 
+'.', e não devem ser imprimidas mais linhas do que o necessário (tantas 
+linhas quantas as necessárias para conter a maior barra, sendo garantida
+ que existe pelo menos um dia com pelo menos 100 casos). Verifiquem o 
+exemplo de input para confirmar se perceberam o pedido.
+  
+</p><h2><font color="black">Exemplo de Input/Output para Flag 1</font></h2>
+
+<table>
+<tbody><tr><th>Input</th><th>Output</th><th>Explicação</th></tr>
+<tr>
+<td>
+<pre>8
+2 4 8 14 19 25 28 29
+1
+</pre>
+</td><td>
+<pre>1 6
+</pre>
+</td>
+<td>
+Os aumentos são de +2, +4, +6, +5, +6, +3, +1.<br>
+O menor aumento corresponde a +1; o maior aumento corresponde a +6.
+</td>
+</tr></tbody></table>
+
+<h2><font color="black">Exemplo de Input/Output para Flag 2</font></h2>
+
+<table>
+<tbody><tr><th>Input</th><th>Output</th><th>Explicação</th></tr>
+<tr>
+<td>
+<pre>11
+100 105 110 116 121 128 140 141 146 150 153
+2
+</pre>
+</td><td>
+<pre>3 4
+</pre>
+</td>
+<td>
+As subidas percentuais diárias são: <span class="darkgreen">5.00%</span>, <span class="darkgreen">4.76%</span>, <span class="darkred">5.45%</span>, <span class="darkgreen">4.31%</span>, <span class="darkred">5.79%</span>, <span class="darkred">9.38%</span>, <span class="darkgreen">0.71%</span>, <span class="darkgreen">3.55%</span>, <span class="darkgreen">2.74%</span>, <span class="darkgreen">2.00%</span><br>
+As subidas inferiores ou iguais a 5% estão indicadas a verde. Um período de baixa propagação é uma sequência de dias a verde.<br>
+Existem 3 periodos de dias consecutivos a verde, de tamanhos 2, 1 e 4.
+</td>
+</tr></tbody></table>
+
+<h2><font color="black">Exemplo de Input/Output para Flag 3</font></h2>
+
+<table>
+<tbody><tr><th>Input</th><th>Output</th><th>Explicação</th></tr>
+<tr>
+<td>
+<pre>8
+42 100 202 299 407 603 1045 1320
+3
+</pre>
+</td><td>
+<pre>.......#
+.......#
+.......#
+......##
+......##
+......##
+......##
+.....###
+.....###
+....####
+....####
+..######
+.#######
+</pre>
+</td>
+<td>
+O gráfico 8 colunas (8 dias) e 13 linhas (a altura da maior barra é de 13, correspondendo ao dia com 1320).<br>
+A altura de cada barra é o valor desse dia a dividir por 100.<br>
+Os '.' correspondem a espaços no gráfico sem barra.
+</td>
+</tr></tbody></table>
+
+<hr>
+
+<p align="center">
+Estruturas de Dados (CC1007)<br>
+DCC/FCUP - Faculdade de Ciências da Universidade do Porto
+</p>
+
+<hr>
+  
+
+<script src="[ED231]%20Estat%C3%ADsticas%20Epidemiol%C3%B3gicas_files/app.js" type="text/javascript"></script></body></html>

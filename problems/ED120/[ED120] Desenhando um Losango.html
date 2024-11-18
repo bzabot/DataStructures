@@ -1,0 +1,100 @@
+<html><head>
+<title>[ED120] Desenhando um Losango</title>
+<link rel="StyleSheet" href="[ED120]%20Desenhando%20um%20Losango_files/style.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<h2>[ED120] Desenhando um Losango</h2>
+
+<h3>O problema</h3>
+
+<p align="justify">
+<img src="[ED120]%20Desenhando%20um%20Losango_files/prob120.png" align="right" border="1">
+A tua tarefa é desenhar um losango, constituído
+unicamente pelos caracteres '.' e '#'. O losango é determinado
+por um número indicando o tamanho do seu centro. Por exemplo, um
+losango de tamanho 5 corresponde à seguinte figura:
+
+</p><pre>..#.. -&gt; menos dois cardinais que a linha a seguir
+.###. -&gt; menos dois cardinais que a linha central
+##### -&gt; 5 cardinais (losango de tamanho 5)
+.###. -&gt; menos dois cardinais que a linha central
+..#.. -&gt; menos dois cardinais que a linha anterior
+</pre>
+
+<p>Se <b>N</b> for o tamanho do losango, Todas as linhas do losango
+devem conter exactamente N caracteres. A linha central do losango deve
+conter N cardinais, a linhas exactamente a seguir e a linha
+imediatamente anterior deve conter menos dois cardinais que a central,
+contendo mais dois pontos (que indicam "espaços") e assim
+sucessivamente até chegarmos a uma linha contendo unicamente um
+cardinal.
+
+</p><p>Olha para a figura para perceberes como formar o losango e nota que
+obviamente, o número N tem de ser ímpar.
+
+</p><h3>Input</h3>
+
+<p>O input é constituído por uma linha contendo um único número <b>N</b>
+(<i>3 ≤ N ≤ 99</i>), que corresponde ao tamanho da linha central do
+losango a desenhar. É garantido que o número dado é ímpar.
+
+</p><h3>Output</h3>
+
+<p>O output deve conter tantas linhas quantas as necessárias para
+desenhar o losango no formato descrito atrás, ou seja, com cardinais e pontos.
+
+
+
+</p><h3>Exemplo de input/output 1</h3>
+
+<table class="main" cellpadding="4" border="1">
+<tbody><tr>
+       <th>Input</th>
+       <th>Output</th>
+</tr>
+<tr>
+       <td class="left" valign="top">3</td>
+       <td class="left" valign="top">
+<pre>.#.
+###
+.#.
+</pre>
+</td>
+</tr>
+</tbody></table>
+
+<h3>Exemplo de input/output 2</h3>
+
+<table class="main" cellpadding="4" border="1">
+<tbody><tr>
+       <th>Input</th>
+       <th>Output</th>
+</tr>
+<tr>
+       <td class="left" valign="top">7</td>
+       <td class="left" valign="top">
+<pre>...#...
+..###..
+.#####.
+#######
+.#####.
+..###..
+...#...
+</pre></td>
+</tr>
+</tbody></table>
+  
+<hr>
+
+<p align="center">
+Estruturas de Dados (CC1007)<br>
+DCC/FCUP - Faculdade de Ciências da Universidade do Porto
+</p>
+
+<hr>
+
+
+
+<script src="[ED120]%20Desenhando%20um%20Losango_files/app.js" type="text/javascript"></script></body></html>
