@@ -1,21 +1,21 @@
-public class LinkedListQueue<T> implements MyQueue<T> {
+public class LinkedListStack<T> implements MyStack<T> {
     private DoublyLinkedList<T> list;
 
-    LinkedListQueue() {
+    LinkedListStack() {
         list = new DoublyLinkedList<T>();
     }
 
-    public void enqueue(T v) {
-        list.addLast(v);
+    public void push(T v) {
+        list.addFirst(v);
     }
 
-    public T dequeue() {
+    public T pop() {
         T ans = list.getFirst();
         list.removeFirst();
         return ans;
     }
 
-    public T first() {
+    public T top() {
         return list.getFirst();
     }
 
