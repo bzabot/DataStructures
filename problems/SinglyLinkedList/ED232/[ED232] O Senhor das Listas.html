@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+	<title>[ED232] O Senhor das Listas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<style>
+	  table,tr,td,th {
+	    border-collapse: collapse;
+	    border: 1px solid black;
+	  }
+
+	  th, td {
+	  padding: 4px;
+	  text-align: left;
+	  vertical-align: top;
+	  }
+
+	  .darkgreen {
+	  color: #008800;
+	  font-weight: bold;
+	  }
+
+	  .darkred {
+	  color: #880000;
+	  font-weight: bold;
+	  }
+	</style>
+	
+</head><body bgcolor="white">
+
+<h1><font color="black">[ED232] O Senhor das Listas</font></h1>
+
+<p><font color="red"></font></p><p><font color="red">Neste problema deverá apenas submeter uma classe <b>SinglyLinkedList&lt;T&gt;</b> (e não um programa completo).
+</font></p>
+
+<hr>
+  
+<h3>Código Base</h3>
+  
+<p><img src="[ED232]%20O%20Senhor%20das%20Listas_files/232.jpg" alt="" align="right" border="0" height="450">Use como base a classe <b>SinglyLinkedList&lt;T&gt;</b> (<a href="http://www.dcc.fc.up.pt/~pribeiro/aulas/edados2223/codigo/lista_ligada_simples.html" target="_blank">ver código</a> | download de <a href="http://www.dcc.fc.up.pt/~pribeiro/aulas/edados2223/codigo/Node.java" target="_blank">Node.Java</a> e <a href="http://www.dcc.fc.up.pt/~pribeiro/aulas/edados2223/codigo/SinglyLinkedList.java" target="_blank">SinglyLinkedList.Java</a>),
+ que representa uma lista ligada simples e tem disponíveis métodos para 
+adicionar ou remover um elemento no início ou no final, devolver o 
+tamanho, saber se a lista está vazia ou retornar representação em <i>string</i> para escrita (tal como dado nas aulas).
+
+</p><h2>Problem</h2>
+
+<p><i>
+One linked list to rule them all,<br>
+   one linked list to find them,<br>
+One linked list to bring them all<br>
+and in the darkness bind them. </i>
+  </p>
+
+<p>A população da <i>Terra dos Dados</i> deposita toda a sua fé em ti! Depois de teres conseguido obter o código base da classe <i>SinglyLinkedList&lt;T&gt;</i>, arrancada das mãos dos docentes que a admiravam dizendo <i>"my precious"</i>, tens agora de provar que sabes dominar o seu poder, implementando três novos métodos da classe.
+  
+</p><h2><font color="black">Métodos a Implementar</font></h2>
+
+<p>Deve acrescentar à classe dada os seguintes métodos (<b>não modificando nenhum dos métodos já existentes no código base</b>):
+
+</p><ul>
+  <li><font color="brown"><b>public SinglyLinkedList&lt;T&gt; reverse()</b></font> <i>(30% da cotação)</i><br>
+    Deve <b>devolver uma nova lista que é igual à lista original, mas invertida</b>. Por exemplo, se <i>list</i> for {2,4,6,8}, uma chamada a <i>list.reverse()</i> deve devolver uma nova lista com conteúdo {8,6,4,2}. A lista inicial não deve ser modificada.
+</li></ul>
+
+  
+<ul>
+  <li><font color="brown"><b>public int[] occurrences(T elem)</b></font> <i>(30% da cotação)</i><br>
+  Deve <b>devolver um array contendo as posições (por ordem crescente) de todas as ocorrências</b> do elemento <i>elem</i> na lista. Se não existir nenhuma ocorrência deve devolver <i>null</i>. As posições da lista começam em 0. Por exemplo, se <i>list</i> for {2,5,1,1,2,1}, uma chamada a <i>list.occurrences(1)</i> deve devolver [2,3,5], uma chamada a <i>list.occurrences(2)</i> deve devolver [0,4] e uma chamada a <i>list.occurrences(3)</i> deve devolver <i>null</i>. A lista inicial não deve ser modificada. <b>Dica: para comparar valores genéricos deve usar o .equals e não o ==</b>
+</li></ul>
+
+
+
+<ul>
+  <li><font color="brown"><b>public void remove(SinglyLinkedList&lt;T&gt; toRemove)</b></font> <i>(40% da cotação)</i><br>
+    Deve <b>remover da lista todos os elementos que estão na lista <i>toRemove</i></b>. Por exemplo, se <i>list</i> for {'a','b','d','a','c'}, uma chamada a <i>list.remove({'c','a'})</i> deve fazer com que <i>list</i> fique a ser {'b','d'}, uma chamada a <i>list.remove({'a'})</i> deve fazer com que <i>list</i> fique a ser {'b','d','c'} e uma chamada a <i>list.remove({'a','b','c','d','e'})</i> deve fazer com que <i>list</i> fique a ser {} (lista vazia).
+</li></ul>
+
+      
+<h2><font color="black">Notas</font></h2>
+
+<ul>
+  <li>Pode submeter código com apenas alguns dos métodos implementados (para obter pontuação parcial).
+  </li><li>Em todos os casos de teste as listas têm tamanho máximo de 100 elementos, com a excepção do último caso de teste do método <i>remove</i>
+ (valendo 10% da cotação), onde a lista inicial pode ter 50 mil 
+elementos (a lista dos elementos a remover continua limitada a tamanho 
+100), pelo que nesse caso a sua solução não poderá ser quadrática (ou 
+pior) no número de elementos da lista original para passar no tempo 
+limite.
+  </li><li>Não se esqueça de garantir que no final o atributo <i>size</i> também fica correto .
+  </li><li>Cuidado com os casos limites (ex: lidar com listas vazias, remover no início ou no final da lista; etc).
+  </li><li>Pode implementar métodos auxiliares, se quiser.
+  </li><li>Para testar na sua máquina deve criar uma lista (pode criar 
+no código ou ler a partir de um input) e chamar o método correspondente.
+</li></ul>
+
+<p>&nbsp;
+  
+</p><h3>Exemplos de Input/Output para o método <i>reverse</i></h3>
+
+<table border="1">
+  <tbody><tr>
+    <th>Lista inicial</th>
+    <th>Chamada</th>
+    <th>O que deve ser devolvido</th>
+  </tr>
+  <tr>
+    <td align="center">list = {2,4,6,8}</td>
+    <td align="center">list.reverse()</td>
+    <td align="center">new_list = {8,6,4,2}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {'a','b','c'}</td>
+    <td align="center">list.reverse()</td>
+    <td align="center">new_list = {'c','b','a'}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {"edados"}</td>
+    <td align="center">list.reverse()</td>
+    <td align="center">new_list = {"edados"}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {}</td>
+    <td align="center">list.reverse()</td>
+    <td align="center">new_list = {}</td>
+  </tr>
+
+</tbody></table>
+
+
+<p>&nbsp;
+  
+</p><h3>Exemplos de Input/Output para o método <i>occurrences</i></h3>
+
+<r>
+    </r><table border="1">
+  <tbody><tr>
+    <th>Lista inicial</th>
+    <th>&nbsp; Chamada &nbsp; </th>
+    <th>O que deve ser devolvido</th>
+  </tr>
+  <tr>
+    <td align="center">list = {2,5,1,1,2,1}</td>
+    <td align="center">list.occurrences(1)</td>
+    <td align="center">[2,3,5]</td>
+  </tr>
+  <tr>
+    <td align="center">list = {2,5,1,1,2,1}</td>
+    <td align="center">list.occurrences(2)</td>
+    <td align="center">[0,4]</td>
+  </tr>
+  <tr>
+    <td align="center">list = {2,5,1,1,2,1}</td>
+    <td align="center">list.occurrences(3)</td>
+    <td align="center"><i>null</i></td>
+  </tr>
+  <tr>
+    <td align="center">list = {'a','a','a','a'}</td>
+    <td align="center">list.occurrences('a')</td>
+    <td align="center">[0,1,2,3]</td>    
+  </tr>
+  <tr>
+    <td align="center">list = {"estruturas","de","dados"}</td>
+    <td align="center">list.occurrences("dados")</td>
+    <td align="center">[2]</td>
+  </tr>
+  <tr><td align="center">list = {'a','n','a','n','a','s',}</td>
+    <td align="center">list.occurrences('a')</td>
+    <td align="center">[0,2,4]</td>
+  </tr>
+  
+</tbody></table>
+
+<p>&nbsp;
+
+</p><h3>Exemplos de Input/Output para o método <i>remove</i></h3>
+
+<table border="1">
+  <tbody><tr>
+    <th>Lista inicial</th>
+    <th>&nbsp; Chamada &nbsp; </th>
+    <th>Estado da lista depois da chamada</th>
+  </tr>
+  <tr>
+    <td align="center">list = {'a','b','d','a','c'}</td>
+    <td align="center">list.remove({'c','a'})</td>
+    <td align="center">list = {'b','d'}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {'a','b','d','a','c'}</td>
+    <td align="center">list.remove({'a'})</td>
+    <td align="center">list = {'b','d','c'}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {'a','b','d','a','c'}</td>
+    <td align="center">list.remove({'a','b','c','d','e'})</td>
+    <td align="center">list = {}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {42,22,42,42,22,42}</td>
+    <td align="center">list.remove({42,1})</td>
+    <td align="center">list = {22,22}</td>
+  </tr>
+  <tr>
+    <td align="center">list = {"ola","ola","mundo","ola"}</td>
+    <td align="center">list.remove("ola")</td>
+    <td align="center">list = {"mundo"}</td>    
+  </tr>
+  <tr>
+    <td align="center">list = {1,2,3,3,2,1}</td>
+    <td align="center">list.remove(3)</td>
+    <td align="center">list = {1,2,2,1}</td>    
+  </tr>
+</tbody></table>
+
+<hr>
+
+<p align="center">
+Estruturas de Dados (CC1007)<br>
+DCC/FCUP - Faculdade de Ciências da Universidade do Porto
+</p>
+
+<hr>
+
+
+<script src="[ED232]%20O%20Senhor%20das%20Listas_files/app.js" type="text/javascript"></script></body></html>
