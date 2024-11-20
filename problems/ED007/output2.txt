@@ -1,0 +1,22 @@
+Expressao bem formada
+Erro na posicao 10
+Erro na posicao 4
+Ficam parenteses por fechar
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Expressao bem formada
+Ficam parenteses por fechar
+Ficam parenteses por fechar
+Erro na posicao 0
+Erro na posicao 0
+Erro na posicao 2
+Erro na posicao 2
+Ficam parenteses por fechar
+Erro na posicao 10
+Erro na posicao 4
+Ficam parenteses por fechar

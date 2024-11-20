@@ -1,10 +1,10 @@
 
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList2<T> {
    private Node<T> first; // Primeiro no da lista
    private int size; // Tamanho da lista
 
    // Construtor (cria lista vazia)
-   SinglyLinkedList() {
+   SinglyLinkedList2() {
       first = null;
       size = 0;
    }
@@ -117,10 +117,10 @@ public class SinglyLinkedList<T> {
       return ans;
    }
 
-   public SinglyLinkedList<T> copy() {
+   public SinglyLinkedList2<T> copy() {
       if (isEmpty())
          return null;
-      SinglyLinkedList<T> ans = new SinglyLinkedList<>();
+      SinglyLinkedList2<T> ans = new SinglyLinkedList2<>();
       Node<T> cur = first;
       while (cur != null) {
          ans.addLast(cur.getValue());
@@ -152,40 +152,32 @@ public class SinglyLinkedList<T> {
    }
 
    public void removeAll(T value) {
-      Node<T> cur = first;
-      // Lidando com o primeiro elemento
-      // Enquanto(Não quero manter um elemento)
-      // Vou pegando o próximo elemente e descontando o size,
-      while (!keep(cur, value)) {
-         cur = cur.getNext();
+
+      if (isEmpty())
+         return;
+
+      // Caso primeiros elementos
+      while (first != null && first.getValue().equals(value)) {
+         first = first.getNext();
          size--;
       }
-      first = cur;
 
-      // Agora o first aponta a um elemento que não é value
+      // Um elemento até o final
+      Node<T> cur = first;
+      Node<T> prev = cur;
       while (cur != null) {
-         Node<T> next = cur.getNext();
-         while (!keep(next, value)) {
-            next = next.getNext();
+         // Se o pointeiro atual for igual ao elem buscado, aponta ao proximo
+         if (cur.getValue().equals(value)) {
+            prev.setNext(cur.getNext());
             size--;
+            // Se o elemento atual não for igual ao buscado, prev passa a ser o atual
+         } else {
+            prev = cur;
          }
-         cur.setNext(next);
+
          cur = cur.getNext();
       }
 
-   }
-
-   // Retorna se quero manter um elemento (true) ou não quero manter (false, é
-   // igual ao value)
-   public boolean keep(Node<T> n, T value) {
-      // Se for null acabou a lista
-      if (n == null)
-         return true;
-      // Se os valores forem iguais, não quero manter
-      if (n.getValue().equals(value))
-         return false;
-      else
-         return true;
    }
 
    // Converte a lista para uma String
