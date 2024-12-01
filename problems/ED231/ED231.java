@@ -61,37 +61,34 @@ class Estatisticas {
     }
 
     public void flag2() {
-        float[] percents = new float[dias - 1];
+        double[] percents = new double[dias - 1];
 
         // Criar um vetor com os aumentos percentuais
         for (int i = 1; i < dias; i++) {
             percents[i - 1] = (casos[i] - casos[i - 1]) * (float) 100.0 / casos[i - 1];
         }
 
-        // Períodos de dias consecutivos com aumento percentual <= 5:
-        int bp = 0;
-        int consec = 0;
-        int i = 0;
-        while (i < percents.length) {
-            if (percents[i] <= 5) {
-                // Checar tamanho do período
-                int size = 1;
-                while (percents[i] <= 5 && i < percents.length - 1) {
-                    size++;
-                    i++;
+        int numero_periodos = 0;
+        int maior_consec = 0;
+        int cur = 0;
+        int prev = 0;
+
+        while (cur < percents.length) {
+            if (percents[cur] <= 5) {
+                if (cur == prev) {
+                    numero_periodos++;
                 }
-                if (size > consec) // Se o tamanho do período atual, for maior que o maior período encontrado até
-                                   // agora:
-                    consec = size;
-
-                // Somar += 1 período
-                bp++;
+                int length = cur - prev + 1;
+                if (length > maior_consec) {
+                    maior_consec = length;
+                }
+            } else {
+                prev = cur + 1;
             }
-            i++;
-
+            cur++;
         }
 
-        System.out.println(bp + " " + consec); // Numero de períodos + Tamanho do maior período
+        System.out.println(numero_periodos + " " + maior_consec); // Numero de períodos + Tamanho do maior período
     }
 
     public void flag3() {
