@@ -86,209 +86,76 @@ public class BTree<T> {
 
    // --------------------------------------------------------
 
-   // Verificar se árvore é estrita
-   public boolean strict() {
-      return strict(root);
-   }
-
-   private boolean strict(BTNode<T> n) {
-      if (n == null)
-         return true;
-      if ((n.getLeft() != null && n.getRight() == null) || (n.getLeft() == null && n.getRight() != null))
-         return false;
-      return strict(n.getLeft()) && strict(n.getRight());
-   }
-
-   // --------------------------------------------------------
-
-   // Percorrer um certo caminho
-   public T path(String C) {
-      return path(root, C);
-   }
-
-   private T path(BTNode<T> n, String C) {
-      BTNode<T> cur = n;
-      if (C.equals("R"))
-         return root.getValue();
-      for (String charac : C.split("")) {
-         if (charac.equals("D"))
-            cur = cur.getRight();
-         if (charac.equals("E"))
-            cur = cur.getLeft();
-
-      }
-      return cur.getValue();
-   }
-
-   // --------------------------------------------------------
-
-   // Mostrar todos os nós de um mesmo nível
-   public int nodesLevel(int k) {
-      return nodesLevel(root, k, 0);
-   }
-
-   private int nodesLevel(BTNode<T> n, int k, int acLevel) {
-      if (n == null)
-         return 0;
-      if (acLevel == k && n != null)
-         return 1;
-      return nodesLevel(n.getRight(), k, acLevel + 1) + nodesLevel(n.getLeft(), k, acLevel + 1);
-   }
-
-   // --------------------------------------------------------
-
-   // Devolver a quantidade de nós "internos"
+   // Contar o número de folhas
    public int internal() {
       return internal(root);
    }
 
    private int internal(BTNode<T> n) {
-      if (n == null)
+      // Se for uma folha, não é nó interno
+      if (n.getRight() == null && n.getLeft() == null)
          return 0;
-      if (n.getRight() != null || n.getLeft() != null)
-         return 1 + internal(n.getRight()) + internal(n.getLeft());
-      return 0;
+      int count = 1;
+      if (n.getRight() != null)
+         count += internal(n.getRight());
+      if (n.getLeft() != null)
+         count += internal(n.getLeft());
+      return count;
    }
 
    // --------------------------------------------------------
 
-   // Cortar a árvore a partir de uma profundidade
+   // Remover todos os nós com profundidade maior ou igual a d
    public void cut(int d) {
-      if (d <= 0) {
-         root = null;
-         return;
-      }
       cut(root, d, 0);
-
    }
 
-   private void cut(BTNode<T> n, int d, int acLevel) {
-      BTNode<T> cur = n;
-      if (cur == null)
+   private void cut(BTNode<T> n, int d, int cur) {
+      if (n == null)
          return;
-      if (acLevel == d - 1) {
-         cur.setLeft(null);
-         cur.setRight(null);
+      if (cur == d - 1) {
+         n.setRight(null);
+         n.setLeft(null);
          return;
       }
-      cut(cur.getLeft(), d, acLevel + 1);
-      cut(cur.getRight(), d, acLevel + 1);
+
+      cut(n.getLeft(), d, cur + 1);
+      cut(n.getRight(), d, cur + 1);
    }
 
    // --------------------------------------------------------
 
-   // Retornar array com número máximo de nós em um nível e número de níveis com
-   // essa qntd
+   // Remover todos os nós com profundidade maior ou igual a d
    public int[] maxLevel() {
-      int[] n_nodes = new int[depth() + 1];
-      maxLevel(root, 0, n_nodes);
-
-      int maxSoFar = n_nodes[0];
-      for (int i : n_nodes) {
-         if (i > maxSoFar)
-            maxSoFar = i;
-      }
+      // Ideia: criar um array com o número de nos, os indices daquele array serão o
+      // correspondente nível
+      int[] nNodes = new int[depth() + 1];
+      maxLevel(root, 0, nNodes);
 
       int[] ans = new int[2];
-      ans[0] = maxSoFar;
-      for (int i = 0; i < n_nodes.length; i++) {
-         if (n_nodes[i] == maxSoFar)
+      int biggestSoFar = nNodes[0];
+      for (int i : nNodes) {
+         biggestSoFar = Math.max(i, biggestSoFar);
+      }
+      ans[0] = biggestSoFar;
+      for (int i : nNodes) {
+         if (i == biggestSoFar)
             ans[1] += 1;
       }
       return ans;
+
    }
 
-   private void maxLevel(BTNode<T> n, int level, int[] n_nodes) {
+   private void maxLevel(BTNode<T> n, int level, int[] nNodes) {
       if (n == null)
          return;
-      n_nodes[level] += 1;
-      maxLevel(n.getLeft(), level + 1, n_nodes);
-      maxLevel(n.getRight(), level + 1, n_nodes);
-   }
-
-   // --------------------------------------------------------
-
-   // Contar o número de filhos unicos
-   public int count() {
-      return count(root);
-   }
-
-   private int count(BTNode<T> n) {
-      if (n == null)
-         return 0;
-      if ((n.getRight() != null && n.getLeft() == null) || (n.getRight() == null && n.getLeft() != null)) // é um filho
-                                                                                                          // unico
-         return 1 + count(n.getLeft()) + count(n.getRight());
-      return count(n.getLeft()) + count(n.getRight());
-   }
-
-   // --------------------------------------------------------
-
-   // Devolver o level mais baixo que contenha um nó de certo valor
-   public int level(T v) {
-      boolean[] contains = new boolean[depth() + 1];
-      level(root, v, 0, contains);
-
-      for (int i = 0; i < contains.length; i++) {
-         if (contains[i])
-            return i;
-      }
-
-      return -1;
-
-   }
-
-   private void level(BTNode<T> n, T v, int level, boolean[] contains) {
-      if (n == null)
-         return;
-      if (n.getValue() == v)
-         contains[level] = true;
-      level(n.getLeft(), v, level + 1, contains);
-      level(n.getRight(), v, level + 1, contains);
-   }
-
-   // --------------------------------------------------------
-
-   // Inverte a árvore
-
-   public void invertTree() {
-      invertTree(root);
-   }
-
-   private void invertTree(BTNode<T> n) {
-      if (n.getLeft() != null && n.getRight() != null) {
-         BTNode<T> temp = n.getLeft();
-         n.setLeft(n.getRight());
-         n.setRight(temp);
-
-      }
-
+      nNodes[level] += 1;
       if (n.getLeft() != null) {
-         invertTree(n.getLeft());
+         maxLevel(n.getLeft(), level + 1, nNodes);
       }
-
       if (n.getRight() != null) {
-         invertTree(n.getRight());
+         maxLevel(n.getRight(), level + 1, nNodes);
       }
-   }
-
-   // --------------------------------------------------------
-
-   // checa se a árvore é balanceada i.e. em que as subárvores direitas e esquerdas
-   // de todos os nós não diferem mais que um
-
-   public boolean isBalanced() {
-      return (isBalanced(root));
-   }
-
-   private boolean isBalanced(BTNode<T> n) {
-      if (n == null)
-         return true;
-      int left = depth(n.getLeft());
-      int right = depth(n.getRight());
-      if (Math.abs(left - right) > 1)
-         return false;
-      return isBalanced(n.getRight()) && isBalanced(n.getLeft());
    }
 
    // --------------------------------------------------------

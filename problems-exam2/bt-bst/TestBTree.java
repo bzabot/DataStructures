@@ -13,11 +13,10 @@ public class TestBTree {
       // Ler arvore de inteiros em preorder
       Scanner in = new Scanner(System.in);
       BTree<Integer> t = LibBTree.readIntTree(in);
+      int[] n = t.maxLevel();
 
-      t.printBFS();
-
-      System.out.println(t.isBalanced());
-
-      t.printBFS();
+      for (int i : n) {
+         System.out.print(i);
+      }
    }
 }
